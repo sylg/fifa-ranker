@@ -8,21 +8,23 @@
 
 import Foundation
 
-struct Game {
+struct Game: Resource {
+    var id:Int?
     var homeTeam:Team?
     var awayTeam:Team?
+    var createdAt:NSDate?
     
     var toJSON:[String:NSDictionary] {
         get {
             let object =  [
                 "team_one": [
                     "fifa_team":  homeTeam!.fifaTeamId,
-                    "player_combination": homeTeam!.playerCombinationIds,
+                    "players": homeTeam!.playerCombinationIds,
                     "goals_scored": homeTeam!.goalsScored!
                 ],
                 "team_two": [
                     "fifa_team":  awayTeam!.fifaTeamId,
-                    "player_combination": awayTeam!.playerCombinationIds,
+                    "players": awayTeam!.playerCombinationIds,
                     "goals_scored": awayTeam!.goalsScored!
                 ],
             ]
@@ -49,21 +51,5 @@ struct Game {
         else {
             return false
         }
-    }
-    
-    
-    
-}
-
-struct Team {
-    var fifaTeam:FifaTeam?
-    var playerCombination:[Player]?
-    var goalsScored:Int?
-    
-    var playerCombinationIds:[Int] {
-        return playerCombination!.map({$0.id})
-    }
-    var fifaTeamId:Int {
-        return fifaTeam!.id
     }
 }

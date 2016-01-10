@@ -68,16 +68,15 @@ class GameCreatorViewController: FormViewController {
     
     func updateTeamsPicker(teams:[FifaTeam]) {
         for team in formTeams {
-            let row = self.form.rowByTag("pickTeam-\(team)") as! PickerInlineRow<FifaTeam>
+            let row = self.form.rowByTag("pickTeam-\(team)") as! PushRow<FifaTeam>
             row.options = teams
         }
     }
     
     func addFormForTeam(team: String) {
         form +++ Section("\(team) Team")
-            <<< MultipleSelectorRow<Player>() {
+            <<< MultipleSelectorRow<Player>("pickPlayers-\(team)") {
                 $0.selectorTitle = "Pick one or more players"
-                $0.tag = "pickPlayers-\(team)"
                 $0.title = "Player(s)"
             }
             .onPresent { from, to in
@@ -93,15 +92,14 @@ class GameCreatorViewController: FormViewController {
 
             }
             
-            <<< PickerInlineRow<FifaTeam>() {
-                $0.tag = "pickTeam-\(team)"
+            <<< PushRow<FifaTeam>("pickTeam-\(team)") {
                 $0.title = "Team"
             }.onChange { row in
                 if team == "Home" {
-                    self.homeTeam.fifaTeam = row.value!
+                    self.homeTeam.fifaTeam = row.value! as FifaTeam
                 }
                 else {
-                    self.awayTeam.fifaTeam = row.value!
+                    self.awayTeam.fifaTeam = row.value! as FifaTeam
                 }
             }
             <<< IntRow() {
@@ -121,7 +119,9 @@ class GameCreatorViewController: FormViewController {
     }
     
     func submitGame(sender:UIButton) {
-        // TODO: I can haz Validation pwease
+
+        
+//      //   For testingzzz
 //        let player1 = Player(SlackId: 123, slackName: "syl", id: 2)
 //        let player2 = Player(SlackId: 1234, slackName: "jack", id: 1)
 //        
@@ -143,7 +143,6 @@ class GameCreatorViewController: FormViewController {
             sender.setTitle("Sending...", forState: .Normal)
             
             self.game!.submitGame({ (response, error) -> Void in
-                print("response form game submit")
                 activityIndicator.removeFromSuperview()
                 sender.setTitle("Success ✔︎", forState: .Normal)
                 NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "dismissMessage:", userInfo: sender, repeats: false)

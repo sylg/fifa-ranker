@@ -10,11 +10,11 @@ import Foundation
 
 
 class Player: Resource, Hashable, CustomStringConvertible {
-    let id:Int
+    let id:Int?
     let slackId:Int
     let slackName:String
     var hashValue: Int {
-        return id
+        return id!
     }
     
     var description: String {

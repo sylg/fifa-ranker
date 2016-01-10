@@ -9,12 +9,12 @@
 import Foundation
 
 class FifaTeam: Resource, Hashable, CustomStringConvertible {
-    let id:Int
+    let id:Int?
     let teamName:String
     let teamRating:Int
     
     var hashValue:Int {
-        return id
+        return id!
     }
     
     var description:String {
