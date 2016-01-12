@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E0555D31C4438AA008A6547 /* FifaTeamPushRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0555D21C4438AA008A6547 /* FifaTeamPushRow.swift */; };
+		3E0555D51C443910008A6547 /* FifaTeamTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0555D41C443910008A6547 /* FifaTeamTableViewController.swift */; };
 		3E451C371C36A20800F1CDD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E451C361C36A20800F1CDD6 /* AppDelegate.swift */; };
 		3E451C391C36A20800F1CDD6 /* GameCreatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E451C381C36A20800F1CDD6 /* GameCreatorViewController.swift */; };
 		3E451C3B1C36A20800F1CDD6 /* GameLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E451C3A1C36A20800F1CDD6 /* GameLogViewController.swift */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E0555D21C4438AA008A6547 /* FifaTeamPushRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FifaTeamPushRow.swift; sourceTree = "<group>"; };
+		3E0555D41C443910008A6547 /* FifaTeamTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FifaTeamTableViewController.swift; sourceTree = "<group>"; };
 		3E451C331C36A20800F1CDD6 /* fifa-ranker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fifa-ranker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E451C361C36A20800F1CDD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E451C381C36A20800F1CDD6 /* GameCreatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCreatorViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +101,8 @@
 				3EBB1E3E1C42D367001422B5 /* GameLogTableViewCell.xib */,
 				3EBB1E411C42EB21001422B5 /* Helpers.swift */,
 				3EBB1E431C42EB6E001422B5 /* Team.swift */,
+				3E0555D21C4438AA008A6547 /* FifaTeamPushRow.swift */,
+				3E0555D41C443910008A6547 /* FifaTeamTableViewController.swift */,
 			);
 			path = "fifa-ranker";
 			sourceTree = "<group>";
@@ -131,6 +137,7 @@
 				3E451C311C36A20800F1CDD6 /* Resources */,
 				E5747AE81AB65F95A7B86567 /* Embed Pods Frameworks */,
 				D0D50BC4D1AC302664018ED5 /* Copy Pods Resources */,
+				3EC028511C4425C4000FA8B6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -190,6 +197,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3EC028511C4425C4000FA8B6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" ff2f547026889b30a1398bb907b358400a5bd134 b4b47cf2cacdad91f08f54fdd7164643d0ab8f020f9e6dd887d8db1cb782e4c9";
+		};
 		8128FEC8F654E2D2F5524676 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -249,6 +269,8 @@
 				3EBB1E421C42EB21001422B5 /* Helpers.swift in Sources */,
 				3EBB1E3F1C42D367001422B5 /* GameLogTableViewCell.swift in Sources */,
 				3E451C371C36A20800F1CDD6 /* AppDelegate.swift in Sources */,
+				3E0555D31C4438AA008A6547 /* FifaTeamPushRow.swift in Sources */,
+				3E0555D51C443910008A6547 /* FifaTeamTableViewController.swift in Sources */,
 				3E4AD2FB1C36C5AF00B67828 /* FifaTeam.swift in Sources */,
 				3EBB1E441C42EB6E001422B5 /* Team.swift in Sources */,
 				3E451C391C36A20800F1CDD6 /* GameCreatorViewController.swift in Sources */,
@@ -364,10 +386,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "fifa-ranker/Info-dev.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.pusher.fifa-ranker";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shipit.fifa-ranker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -378,10 +401,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "fifa-ranker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.pusher.fifa-ranker";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shipit.fifa-ranker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

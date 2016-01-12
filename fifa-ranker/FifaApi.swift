@@ -107,11 +107,11 @@ class FifaAPI {
         }
     }
     
-    func getAll(resource:APIEndpoint, onCompletion:(response:[Resource]?, error:NSError?)->Void) {
+    func getAll(resource:APIEndpoint, page:Int?, perPage: Int?, onCompletion:(response:[Resource]?, error:NSError?)->Void) {
         // TODO: Implement Paginations support
         let fullURL = self.baseUrl + resource.path
         
-        Alamofire.request(.GET, fullURL).responseJSON { response in
+        Alamofire.request(.GET, fullURL, parameters: ["page": page ?? 1, "per_page": perPage ?? 50]).responseJSON { response in
             var results = [Resource]()
             switch response.result {
                 
@@ -135,7 +135,7 @@ class FifaAPI {
                             
                             results.append(game)
                         case .Players:
-                            results.append(Player(SlackId: Int(subJson["slack_id"].string!)!, slackName: subJson["slack_name"].string!, id: subJson["id"].int!))
+                            results.append(Player(SlackId: subJson["slack_id"].string!, slackName: subJson["slack_name"].string!, id: subJson["id"].int!))
                         case .FifaTeams:
                             results.append(FifaTeam(teamName: subJson["team_name"].string!, teamRating: subJson["team_rating"].int!, id: subJson["id"].int!))
                         default:

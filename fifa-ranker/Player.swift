@@ -11,7 +11,7 @@ import Foundation
 
 class Player: Resource, Hashable, CustomStringConvertible {
     let id:Int?
-    let slackId:Int
+    let slackId:String
     let slackName:String
     var hashValue: Int {
         return id!
@@ -21,7 +21,7 @@ class Player: Resource, Hashable, CustomStringConvertible {
         return slackName
     }
     
-    init(SlackId:Int, slackName:String, id:Int) {
+    init(SlackId:String, slackName:String, id:Int) {
         self.id = id
         self.slackId = SlackId
         self.slackName = slackName

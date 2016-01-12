@@ -55,7 +55,7 @@ class GameLogViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func fetchData() {
-        self.API.getAll(.Games) { results, error in
+        self.API.getAll(.Games, page: 1, perPage: 50) { results, error in
             if error != nil {
                 return
             }

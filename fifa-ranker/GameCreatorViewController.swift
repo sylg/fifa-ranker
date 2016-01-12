@@ -30,7 +30,7 @@ class GameCreatorViewController: FormViewController {
         // Fetching Data
         // TODO: Multi threads that shit group_async FTW
         let t = FifaAPI()
-        t.getAll(.Players) { results, error in
+        t.getAll(.Players, page: nil, perPage: nil) { results, error in
             if error != nil {
                 print(error!.localizedDescription)
                 return
@@ -39,7 +39,7 @@ class GameCreatorViewController: FormViewController {
             self.updatePlayersPicker(self.players!)
         }
         
-        t.getAll(.FifaTeams) { results, error in
+        t.getAll(.FifaTeams, page: 1, perPage: 600) { results, error in
             if error != nil {
                 print(error!.localizedDescription)
                 return
@@ -89,12 +89,14 @@ class GameCreatorViewController: FormViewController {
                 else {
                     self.awayTeam.playerCombination = selectedValue
                 }
-
             }
             
             <<< PushRow<FifaTeam>("pickTeam-\(team)") {
                 $0.title = "Team"
-            }.onChange { row in
+            }.onPresent { from, to in
+                to.tableView?.backgroundColor = UIColor.redColor()
+            }
+            .onChange { row in
                 if team == "Home" {
                     self.homeTeam.fifaTeam = row.value! as FifaTeam
                 }
@@ -213,5 +215,9 @@ class GameCreatorViewController: FormViewController {
         else {
             return nil
         }
+    }
+    
+    func scrollViewDidScroll(scrollView:UIScrollView!) {
+        print("scrol")
     }
 }
